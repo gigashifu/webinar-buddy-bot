@@ -1,0 +1,1873 @@
+{
+  "version": {
+    "_version": 13.03,
+    "autoSaveFromRestore": false,
+    "canvasTemplates": [],
+    "components": [],
+    "creatorID": 1806885,
+    "manualSave": false,
+    "model": {},
+    "name": "Initial Version",
+    "platformData": {
+      "slots": [],
+      "intents": [
+        {
+          "key": "None",
+          "name": "None",
+          "slots": [],
+          "inputs": [],
+          "noteID": null
+        }
+      ],
+      "settings": {
+        "restart": true,
+        "repeat": 100,
+        "locales": [
+          "en-US"
+        ],
+        "globalNoMatch": {
+          "type": "static",
+          "prompt": {
+            "content": [
+              {
+                "children": [
+                  {
+                    "text": "Sorry, I didn’t get that. Please try again."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "messageDelay": {
+          "durationMilliseconds": 500
+        },
+        "defaultVoice": "elevenlabs:eleven_turbo_v2_5:ZF6FPAbjXT4488VcRRnw",
+        "deepgramASR": {
+          "silenceWaitMS": 10,
+          "punctuationWaitMS": 200,
+          "partialWaitMS": 1000,
+          "interruptionWaitWords": 1,
+          "audioCue": null
+        }
+      },
+      "publishing": {
+        "avatar": "https://cdn.voiceflow.com/assets/logo.png",
+        "color": "#397DFF",
+        "description": "Hi, how can I help you today?",
+        "feedback": false,
+        "image": "https://cdn.voiceflow.com/assets/logo.png",
+        "persistence": "localStorage",
+        "position": "right",
+        "spacing": {
+          "side": 24,
+          "bottom": 24
+        },
+        "title": "Your AI agent",
+        "watermark": true,
+        "audioInterface": true
+      },
+      "platform": "webchat"
+    },
+    "programResources": {
+      "agents": {
+        "68deb8557ce9420007c0b437": {
+          "name": "Gather registration details",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b440",
+              "name": "Registration complete",
+              "variables": [],
+              "description": "Proceed if registration details are provided successfully."
+            },
+            {
+              "id": "68deb8557ce9420007c0b441",
+              "name": "Registration failed or incomplete",
+              "variables": [],
+              "description": "Proceed if attendee is unable to provide registration details."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Welcome the attendee and confirm their registration for the upcoming webinar. Collect necessary information, such as name, email address, and any preferences or topics they are interested in related to the webinar.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b438": {
+          "name": "Track attendee interests and engagement",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b442",
+              "name": "Engagement and interests noted",
+              "variables": [],
+              "description": "If interests and engagement data have been recorded, proceed to send personalized reminders."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Record the attendee's interests and any previous engagement patterns, such as prior event attendance or interaction. Note topics of special interest for future use in reminders and follow-ups.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b439": {
+          "name": "Send personalized reminders and previews",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b443",
+              "name": "Reminder sent successfully",
+              "variables": [],
+              "description": "If reminder email is sent without issue, proceed to monitoring attendance."
+            },
+            {
+              "id": "68deb8557ce9420007c0b444",
+              "name": "Reminder delivery issue",
+              "variables": [],
+              "description": "If there is a failure in sending the email or reaching the attendee, follow up on the issue."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Craft a personalized email to the attendee based on their interests and engagement patterns. Include a reminder for the upcoming webinar, and share a short content preview or agenda tailored to their interests. Use engaging subject lines and content to maximize open and participation rates.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [
+            {
+              "variables": {},
+              "description": null,
+              "integrationToolID": "68deb83f7ce9420007c0b42c"
+            }
+          ],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b43a": {
+          "name": "Monitor attendance and engagement",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b446",
+              "name": "Attended with engagement",
+              "variables": [],
+              "description": "Proceed if the attendee joined and engaged with the webinar."
+            },
+            {
+              "id": "68deb8557ce9420007c0b447",
+              "name": "Did not attend or low engagement",
+              "variables": [],
+              "description": "Proceed if the attendee did not join or had minimal engagement."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Track if the attendee joins the webinar and their level of participation (e.g., chat activity, poll responses). Use this to personalize future post-event follow-ups.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b43b": {
+          "name": "Send post-event personalized follow-up",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b448",
+              "name": "Follow-up delivered and flow ends",
+              "variables": [],
+              "description": "Close out the engagement flow after successful delivery of the post-event follow-up."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Send a personalized post-event email with relevant resources, recordings, further reading, and a thank-you note based on their engagement and stated interests. Encourage future participation and provide a way to give feedback or join related events.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [
+            {
+              "variables": {},
+              "description": null,
+              "integrationToolID": "68deb83f7ce9420007c0b42c"
+            }
+          ],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b43c": {
+          "name": "Follow-up with non-attendees or low engagement",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b44a",
+              "name": "Follow-up sent",
+              "variables": [],
+              "description": "Flow ends after follow-up is sent to encourage future engagement."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Send a friendly follow-up email to non-attendees or those who minimally engaged. Share a link to the recording, highlight key moments they missed based on their interests, and invite them for feedback or to upcoming webinars. Offer support or resources to encourage future engagement.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [
+            {
+              "variables": {},
+              "description": null,
+              "integrationToolID": "68deb83f7ce9420007c0b42c"
+            }
+          ],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b43d": {
+          "name": "Handle registration issues",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b44c",
+              "name": "Issue communicated and flow ends",
+              "variables": [],
+              "description": "End the flow after communicating the registration issue to the user."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Inform the attendee that registration could not be completed due to missing or conflicting information. Offer guidance to retry the process or seek support.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b43e": {
+          "name": "Handle reminder delivery issues",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b44d",
+              "name": "Issue communicated and flow ends",
+              "variables": [],
+              "description": "End the flow after attempting to resolve the reminder delivery issue."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "Notify the user that personalized reminder email could not be delivered. Suggest alternative contact methods or offer support to troubleshoot the issue.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        },
+        "68deb8557ce9420007c0b43f": {
+          "name": "Close engagement for non-attendees",
+          "settings": {
+            "model": "claude-4-sonnet",
+            "maxTokens": 5000,
+            "temperature": 0.3,
+            "reasoningEffort": null
+          },
+          "cardTool": null,
+          "apiTools": [],
+          "pathTools": [
+            {
+              "id": "68deb8557ce9420007c0b44e",
+              "name": "Engagement closed",
+              "variables": [],
+              "description": "Flow ends after contacting non-engaged attendee."
+            }
+          ],
+          "buttonTool": null,
+          "description": null,
+          "carouselTool": null,
+          "instructions": "No further action is needed unless attendee re-engages. Thank them and keep channel open for future opportunities.",
+          "functionTools": [],
+          "webSearchTool": null,
+          "callForwardTool": null,
+          "integrationTools": [],
+          "knowledgeBaseTool": null,
+          "mcpIntegrationTools": []
+        }
+      },
+      "prompts": {},
+      "apiTools": {},
+      "messages": {},
+      "integrationTools": {
+        "68deb83f7ce9420007c0b42c": {
+          "name": "Send email",
+          "toolName": "google_gmail_send_email",
+          "description": null,
+          "toolProvider": "google_gmail"
+        }
+      },
+      "mcpIntegrationTools": {}
+    },
+    "prototype": {
+      "type": "chat",
+      "data": {
+        "name": "Webinar attendee engagement and follow-up flow",
+        "locales": [
+          "en-US"
+        ]
+      },
+      "model": {
+        "intents": [],
+        "slots": []
+      },
+      "context": {
+        "stack": [
+          {
+            "diagramID": "68deb8557ce9420007c0b44f",
+            "storage": {},
+            "variables": {}
+          }
+        ],
+        "variables": {}
+      },
+      "surveyorContext": {
+        "platform": "webchat",
+        "slotsMap": {},
+        "extraSlots": [],
+        "cmsEntities": {},
+        "extraIntents": [],
+        "cmsVariables": {
+          "sessions": {
+            "isSystem": true,
+            "description": "The number of times a particular user has opened the app.",
+            "defaultValue": null
+          },
+          "user_id": {
+            "isSystem": true,
+            "description": "The user's unique ID.",
+            "defaultValue": null
+          },
+          "timestamp": {
+            "isSystem": true,
+            "description": "UNIX timestamp (number of seconds since January 1st, 1970 at UTC).",
+            "defaultValue": null
+          },
+          "platform": {
+            "isSystem": true,
+            "description": "The platform your agent is running on (e.g. \"voiceflow\").",
+            "defaultValue": null
+          },
+          "locale": {
+            "isSystem": true,
+            "description": "The locale of the user (eg. en-US, en-CA, it-IT, fr-FR, ...).",
+            "defaultValue": null
+          },
+          "intent_confidence": {
+            "isSystem": true,
+            "description": "The confidence interval (measured as a value from 0 to 100) for the most recently matched intent.",
+            "defaultValue": null
+          },
+          "last_response": {
+            "isSystem": true,
+            "description": "The agent's last response (text/speak) in a string.",
+            "defaultValue": null
+          },
+          "last_event": {
+            "isSystem": true,
+            "description": "The object containing the last event that the user client has triggered.",
+            "defaultValue": null
+          },
+          "last_utterance": {
+            "isSystem": true,
+            "description": "The user's last utterance in a text string.",
+            "defaultValue": null
+          },
+          "vf_memory": {
+            "isSystem": true,
+            "description": "Last 10 user inputs and agent responses in a string (e.g. \"agent: How can i help?\"\nuser: What's the weather today?).",
+            "defaultValue": null
+          }
+        },
+        "usedIntentsSet": [],
+        "functionDefinitions": {},
+        "referencedAgentsIDs": [
+          "68deb8557ce9420007c0b437",
+          "68deb8557ce9420007c0b438",
+          "68deb8557ce9420007c0b439",
+          "68deb8557ce9420007c0b43a",
+          "68deb8557ce9420007c0b43b",
+          "68deb8557ce9420007c0b43c",
+          "68deb8557ce9420007c0b43d",
+          "68deb8557ce9420007c0b43e",
+          "68deb8557ce9420007c0b43f"
+        ],
+        "referencedPromptIDs": [],
+        "referencedAPIToolIDs": [],
+        "referencedResponseIDs": [],
+        "referencedIntegrationToolIDs": [
+          "68deb83f7ce9420007c0b42c"
+        ],
+        "referencedMCPIntegrationToolIDs": [],
+        "interfaces": [],
+        "permissions": [],
+        "usedEventsSet": [],
+        "goToIntentsSet": []
+      },
+      "settings": {},
+      "platform": "webchat"
+    },
+    "settings": {
+      "voice": {
+        "tts": {
+          "provider": "elevenlabs",
+          "model": "eleven_turbo_v2_5",
+          "voice": "ZF6FPAbjXT4488VcRRnw",
+          "settings": {
+            "speed": 1.2
+          }
+        },
+        "failureMessage": "We’re sorry, but the call cannot be completed at this time. Please try again later.",
+        "hasCallRecording": true
+      },
+      "widget": {
+        "type": "chat",
+        "chat": {
+          "voiceInput": true,
+          "voiceOutput": true,
+          "renderMode": "widget",
+          "headerImage": {
+            "enabled": true
+          },
+          "agentImage": {
+            "enabled": false
+          },
+          "banner": {
+            "title": "Your AI agent",
+            "description": "How can I help you today?",
+            "enabled": true
+          },
+          "placeholderText": "Message...",
+          "disclaimer": {
+            "enabled": false,
+            "title": "Privacy notice",
+            "description": "Before we can proceed with your conversation, we kindly ask you to review and accept our privacy policy, outlining how we handle and protect your personal information throughout our services.",
+            "primaryButtonText": "Submit",
+            "secondaryButtonText": "Privacy policy",
+            "secondaryButtonURL": ""
+          },
+          "aiDisclaimer": {
+            "text": "Generated by AI, double-check for accuracy.",
+            "enabled": false
+          },
+          "handoffToAgentImageURL": ""
+        },
+        "voice": {
+          "renderMode": "full",
+          "content": {
+            "talkingText": "Talk to interrupt",
+            "endButtonText": "End",
+            "listeningText": "Listening...",
+            "startButtonText": "Start a call",
+            "callToActionText": "How can I help you?"
+          }
+        },
+        "common": {
+          "sideSpacing": "20",
+          "bottomSpacing": "20",
+          "position": "right",
+          "fontFamily": "UCity Pro",
+          "primaryColor": {
+            "color": "#397DFF",
+            "palette": {
+              "50": "#E7F5FD",
+              "100": "#C6E4FB",
+              "200": "#A2D2FA",
+              "300": "#87BFFB",
+              "400": "#659FFD",
+              "500": "#397DFF",
+              "600": "#2F68DB",
+              "700": "#264EB4",
+              "800": "#1C368E",
+              "900": "#0F1E61"
+            }
+          },
+          "poweredBy": true,
+          "launcher": {
+            "type": "both",
+            "text": "Test your agent"
+          },
+          "footerLink": {
+            "enabled": false
+          },
+          "persistence": "localStorage"
+        },
+        "security": {
+          "approvedDomains": {
+            "enabled": false,
+            "domains": ""
+          },
+          "disableTranscript": false
+        }
+      },
+      "memory": {
+        "turns": 50
+      },
+      "llmFallback": {
+        "models": {
+          "open-ai": {
+            "*": {
+              "provider": "anthropic",
+              "model": "claude-4-sonnet"
+            }
+          },
+          "anthropic": {
+            "*": {
+              "provider": "open-ai",
+              "model": "gpt-4.1-2025-04-14"
+            }
+          },
+          "groq": {
+            "*": {
+              "provider": "anthropic",
+              "model": "claude-4-sonnet"
+            }
+          },
+          "google": {
+            "*": {
+              "provider": "anthropic",
+              "model": "claude-4-sonnet"
+            }
+          }
+        }
+      },
+      "globalNoMatch": {
+        "type": "static",
+        "prompt": [
+          {
+            "text": [
+              "Sorry, I didn’t get that. Please try again."
+            ]
+          }
+        ]
+      },
+      "intentClassification": {
+        "type": "rag",
+        "params": {
+          "model": "claude-3.5-haiku",
+          "temperature": 0.1
+        },
+        "promptWrapper": null
+      }
+    },
+    "topics": [
+      {
+        "type": "DIAGRAM",
+        "sourceID": "64dbb6696a8fab0013dba194"
+      }
+    ],
+    "variables": [
+      "sessions",
+      "user_id",
+      "timestamp",
+      "platform",
+      "locale",
+      "intent_confidence",
+      "last_response",
+      "last_event",
+      "last_utterance",
+      "vf_memory"
+    ],
+    "_id": "68deb8550eeddfe0a10fa289",
+    "updatedAt": "2025-10-02T17:54:23.770Z",
+    "publishedAt": "2024-09-27T16:54:27.996Z",
+    "domains": [
+      {
+        "id": "cla06iyr900b206pkh8d4ap8n",
+        "name": "Home",
+        "live": true,
+        "topicIDs": [
+          "64dbb6696a8fab0013dba194"
+        ],
+        "rootDiagramID": "64dbb6696a8fab0013dba194",
+        "updatedBy": 1806885,
+        "updatedAt": "2025-10-02T17:37:26.170Z"
+      }
+    ],
+    "projectID": "68deb8550eeddfe0a10fa288",
+    "rootDiagramID": "68deb8557ce9420007c0b44f",
+    "templateDiagramID": "64dbb6696a8fab0013dba195"
+  },
+  "diagrams": {
+    "68deb8557ce9420007c0b44f": {
+      "name": "Webinar attendee engagement and follow-up flow",
+      "type": "TOPIC",
+      "zoom": 80,
+      "nodes": {
+        "68deb83f7ce9420007c0b416": {
+          "nodeID": "68deb83f7ce9420007c0b416",
+          "type": "start",
+          "data": {
+            "name": "Start",
+            "color": "#56b365",
+            "triggers": [],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {
+                "next": {
+                  "id": "68deb83f7ce9420007c0b417",
+                  "type": "next",
+                  "data": {},
+                  "target": "cmg9p74jw022r0746fpvmc2g1"
+                }
+              },
+              "dynamic": []
+            },
+            "steps": []
+          },
+          "coords": [
+            0,
+            0
+          ]
+        },
+        "cmg9p74jw023007463bpic5xj": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw023007463bpic5xj",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b437",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b440": {
+                  "id": "68deb8557ce9420007c0b440",
+                  "type": "",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          596.33,
+                          198.67
+                        ]
+                      },
+                      {
+                        "point": [
+                          645.67,
+                          198.67
+                        ]
+                      },
+                      {
+                        "point": [
+                          645.67,
+                          27
+                        ]
+                      },
+                      {
+                        "point": [
+                          695,
+                          27
+                        ],
+                        "allowedToTop": true
+                      }
+                    ]
+                  },
+                  "target": "cmg9p74jw022s0746e8vual2n"
+                },
+                "68deb8557ce9420007c0b441": {
+                  "id": "68deb8557ce9420007c0b441",
+                  "type": "",
+                  "data": {
+                    "points": [
+                      {
+                        "point": [
+                          596.33,
+                          260.83
+                        ]
+                      },
+                      {
+                        "point": [
+                          645.67,
+                          260.83
+                        ]
+                      },
+                      {
+                        "point": [
+                          645.67,
+                          357
+                        ]
+                      },
+                      {
+                        "point": [
+                          695,
+                          357
+                        ],
+                        "allowedToTop": true
+                      }
+                    ]
+                  },
+                  "target": "cmg9p74jw022x07461x80htru"
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          },
+          "coords": [
+            0,
+            0
+          ]
+        },
+        "cmg9p74jw023107462rwcdf4x": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw023107462rwcdf4x",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b438",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b442": {
+                  "id": "68deb8557ce9420007c0b442",
+                  "type": "",
+                  "data": {},
+                  "target": "cmg9p74jw022t07466d7v2k9k"
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw023207463dr25jmo": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw023207463dr25jmo",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b439",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b443": {
+                  "id": "68deb8557ce9420007c0b443",
+                  "type": "",
+                  "data": {},
+                  "target": "cmg9p74jw022u07467z0j4azn"
+                },
+                "68deb8557ce9420007c0b444": {
+                  "id": "68deb8557ce9420007c0b444",
+                  "type": "",
+                  "data": {},
+                  "target": "cmg9p74jw022y074636lw0urz"
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw023307467rwyhr2j": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw023307467rwyhr2j",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b43a",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b446": {
+                  "id": "68deb8557ce9420007c0b446",
+                  "type": "",
+                  "data": {},
+                  "target": "cmg9p74jw022v07464ib8etfu"
+                },
+                "68deb8557ce9420007c0b447": {
+                  "id": "68deb8557ce9420007c0b447",
+                  "type": "",
+                  "data": {},
+                  "target": "cmg9p74jw022w074641a79zfx"
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw02340746g1wxh7io": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw02340746g1wxh7io",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b43b",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b448": {
+                  "id": "68deb8557ce9420007c0b448",
+                  "type": "",
+                  "data": {},
+                  "target": null
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw02350746830a7wb0": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw02350746830a7wb0",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b43c",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b44a": {
+                  "id": "68deb8557ce9420007c0b44a",
+                  "type": "",
+                  "data": {},
+                  "target": "cmg9p74jw022z074642z22xnz"
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw023607467h0g9n40": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw023607467h0g9n40",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b43d",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b44c": {
+                  "id": "68deb8557ce9420007c0b44c",
+                  "type": "",
+                  "data": {},
+                  "target": null
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw02370746bn80c8wg": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw02370746bn80c8wg",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b43e",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b44d": {
+                  "id": "68deb8557ce9420007c0b44d",
+                  "type": "",
+                  "data": {},
+                  "target": null
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw02380746gte48nwl": {
+          "type": "agent",
+          "nodeID": "cmg9p74jw02380746gte48nwl",
+          "data": {
+            "agentID": "68deb8557ce9420007c0b43f",
+            "listenForOtherTriggers": false,
+            "exitEveryConversationalTurn": false,
+            "portsV2": {
+              "byKey": {
+                "68deb8557ce9420007c0b44e": {
+                  "id": "68deb8557ce9420007c0b44e",
+                  "type": "",
+                  "data": {},
+                  "target": null
+                }
+              },
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022r0746fpvmc2g1": {
+          "type": "block",
+          "coords": [
+            430,
+            0
+          ],
+          "nodeID": "cmg9p74jw022r0746fpvmc2g1",
+          "data": {
+            "name": "Gather registration details",
+            "color": "#5b9fd7",
+            "steps": [
+              "cmg9p74jw023007463bpic5xj"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022s0746e8vual2n": {
+          "type": "block",
+          "coords": [
+            860,
+            0
+          ],
+          "nodeID": "cmg9p74jw022s0746e8vual2n",
+          "data": {
+            "name": "Track attendee interests and engagement",
+            "color": "#5b9fd7",
+            "steps": [
+              "cmg9p74jw023107462rwcdf4x"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022t07466d7v2k9k": {
+          "type": "block",
+          "coords": [
+            1290,
+            0
+          ],
+          "nodeID": "cmg9p74jw022t07466d7v2k9k",
+          "data": {
+            "name": "Send personalized reminders and previews",
+            "color": "#5b9fd7",
+            "steps": [
+              "cmg9p74jw023207463dr25jmo"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022u07467z0j4azn": {
+          "type": "block",
+          "coords": [
+            1720,
+            0
+          ],
+          "nodeID": "cmg9p74jw022u07467z0j4azn",
+          "data": {
+            "name": "Monitor attendance and engagement",
+            "color": "#5b9fd7",
+            "steps": [
+              "cmg9p74jw023307467rwyhr2j"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022v07464ib8etfu": {
+          "type": "block",
+          "coords": [
+            2150,
+            0
+          ],
+          "nodeID": "cmg9p74jw022v07464ib8etfu",
+          "data": {
+            "name": "Send post-event personalized follow-up",
+            "color": "#56b365",
+            "steps": [
+              "cmg9p74jw02340746g1wxh7io"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022w074641a79zfx": {
+          "type": "block",
+          "coords": [
+            2150,
+            330
+          ],
+          "nodeID": "cmg9p74jw022w074641a79zfx",
+          "data": {
+            "name": "Follow-up with non-attendees or low engagement",
+            "color": "#5b9fd7",
+            "steps": [
+              "cmg9p74jw02350746830a7wb0"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022x07461x80htru": {
+          "type": "block",
+          "coords": [
+            860,
+            330
+          ],
+          "nodeID": "cmg9p74jw022x07461x80htru",
+          "data": {
+            "name": "Handle registration issues",
+            "color": "#CB627B",
+            "steps": [
+              "cmg9p74jw023607467h0g9n40"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022y074636lw0urz": {
+          "type": "block",
+          "coords": [
+            1720,
+            330
+          ],
+          "nodeID": "cmg9p74jw022y074636lw0urz",
+          "data": {
+            "name": "Handle reminder delivery issues",
+            "color": "#CB627B",
+            "steps": [
+              "cmg9p74jw02370746bn80c8wg"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        },
+        "cmg9p74jw022z074642z22xnz": {
+          "type": "block",
+          "coords": [
+            2580,
+            0
+          ],
+          "nodeID": "cmg9p74jw022z074642z22xnz",
+          "data": {
+            "name": "Close engagement for non-attendees",
+            "color": "#56b365",
+            "steps": [
+              "cmg9p74jw02380746gte48nwl"
+            ],
+            "portsV2": {
+              "byKey": {},
+              "builtIn": {},
+              "dynamic": []
+            }
+          }
+        }
+      },
+      "offsetX": 270.40000000000003,
+      "offsetY": 250.8,
+      "modified": 1759426623,
+      "variables": [],
+      "creatorID": 1806885,
+      "_id": "68deb8560eeddfe0a10fa28b",
+      "diagramID": "68deb8557ce9420007c0b44f",
+      "versionID": "68deb8550eeddfe0a10fa289"
+    }
+  },
+  "flows": [],
+  "entities": [],
+  "entityVariants": [],
+  "intents": [
+    {
+      "id": "None",
+      "name": "None",
+      "createdByID": 1806885,
+      "folderID": null,
+      "description": null,
+      "automaticReprompt": false,
+      "entityOrder": [],
+      "automaticRepromptSettings": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    }
+  ],
+  "utterances": [],
+  "requiredEntities": [],
+  "folders": [],
+  "responses": [],
+  "responseMessages": [],
+  "responseDiscriminators": [],
+  "variables": [
+    {
+      "id": "sessions",
+      "name": "sessions",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "number",
+      "description": "The number of times a particular user has opened the app.",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "user_id",
+      "name": "user_id",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "The user's unique ID.",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "timestamp",
+      "name": "timestamp",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "UNIX timestamp (number of seconds since January 1st, 1970 at UTC).",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "platform",
+      "name": "platform",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "The platform your agent is running on (e.g. \"voiceflow\").",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "locale",
+      "name": "locale",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "The locale of the user (eg. en-US, en-CA, it-IT, fr-FR, ...).",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "intent_confidence",
+      "name": "intent_confidence",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "number",
+      "description": "The confidence interval (measured as a value from 0 to 100) for the most recently matched intent.",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "last_response",
+      "name": "last_response",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "The agent's last response (text/speak) in a string.",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "last_event",
+      "name": "last_event",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "any",
+      "description": "The object containing the last event that the user client has triggered.",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "last_utterance",
+      "name": "last_utterance",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "The user's last utterance in a text string.",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "vf_memory",
+      "name": "vf_memory",
+      "createdByID": 1806885,
+      "folderID": null,
+      "color": "#515A63",
+      "isArray": false,
+      "isSystem": true,
+      "datatype": "text",
+      "description": "Last 10 user inputs and agent responses in a string (e.g. \"agent: How can i help?\"\nuser: What's the weather today?).",
+      "defaultValue": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    }
+  ],
+  "workflows": [
+    {
+      "id": "66df755be937eb000784abb2",
+      "name": "Start workflow",
+      "createdByID": 1806885,
+      "folderID": null,
+      "status": null,
+      "isStart": true,
+      "diagramID": "68deb8557ce9420007c0b44f",
+      "assigneeID": null,
+      "description": "",
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:54:30.000Z",
+      "updatedByID": 1806885
+    }
+  ],
+  "attachments": [],
+  "cardButtons": [],
+  "prompts": [],
+  "promptMessages": [],
+  "events": [],
+  "agents": [
+    {
+      "id": "68deb8557ce9420007c0b437",
+      "name": "Gather registration details",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Welcome the attendee and confirm their registration for the upcoming webinar. Collect necessary information, such as name, email address, and any preferences or topics they are interested in related to the webinar."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b440",
+        "68deb8557ce9420007c0b441"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b438",
+      "name": "Track attendee interests and engagement",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Record the attendee's interests and any previous engagement patterns, such as prior event attendance or interaction. Note topics of special interest for future use in reminders and follow-ups."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b442"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b439",
+      "name": "Send personalized reminders and previews",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Craft a personalized email to the attendee based on their interests and engagement patterns. Include a reminder for the upcoming webinar, and share a short content preview or agenda tailored to their interests. Use engaging subject lines and content to maximize open and participation rates."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b443",
+        "68deb8557ce9420007c0b444"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b43a",
+      "name": "Monitor attendance and engagement",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Track if the attendee joins the webinar and their level of participation (e.g., chat activity, poll responses). Use this to personalize future post-event follow-ups."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b446",
+        "68deb8557ce9420007c0b447"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b43b",
+      "name": "Send post-event personalized follow-up",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Send a personalized post-event email with relevant resources, recordings, further reading, and a thank-you note based on their engagement and stated interests. Encourage future participation and provide a way to give feedback or join related events."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b448"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b43c",
+      "name": "Follow-up with non-attendees or low engagement",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Send a friendly follow-up email to non-attendees or those who minimally engaged. Share a link to the recording, highlight key moments they missed based on their interests, and invite them for feedback or to upcoming webinars. Offer support or resources to encourage future engagement."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b44a"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b43d",
+      "name": "Handle registration issues",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Inform the attendee that registration could not be completed due to missing or conflicting information. Offer guidance to retry the process or seek support."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b44c"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b43e",
+      "name": "Handle reminder delivery issues",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "Notify the user that personalized reminder email could not be delivered. Suggest alternative contact methods or offer support to troubleshoot the issue."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b44d"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    },
+    {
+      "id": "68deb8557ce9420007c0b43f",
+      "name": "Close engagement for non-attendees",
+      "createdByID": 1806885,
+      "folderID": null,
+      "settings": {
+        "model": "claude-4-sonnet",
+        "maxTokens": 5000,
+        "temperature": 0.3,
+        "reasoningEffort": null
+      },
+      "description": null,
+      "instructions": [
+        {
+          "text": [
+            "No further action is needed unless attendee re-engages. Thank them and keep channel open for future opportunities."
+          ]
+        }
+      ],
+      "pathToolOrder": [
+        "68deb8557ce9420007c0b44e"
+      ],
+      "webSearchTool": null,
+      "knowledgeBaseTool": null,
+      "buttonTool": null,
+      "cardTool": null,
+      "carouselTool": null,
+      "callForwardTool": null,
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    }
+  ],
+  "agentAPITools": [],
+  "agentPathTools": [
+    {
+      "id": "68deb8557ce9420007c0b440",
+      "name": "Registration complete",
+      "agentID": "68deb8557ce9420007c0b437",
+      "description": "Proceed if registration details are provided successfully.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b441",
+      "name": "Registration failed or incomplete",
+      "agentID": "68deb8557ce9420007c0b437",
+      "description": "Proceed if attendee is unable to provide registration details.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b442",
+      "name": "Engagement and interests noted",
+      "agentID": "68deb8557ce9420007c0b438",
+      "description": "If interests and engagement data have been recorded, proceed to send personalized reminders.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b443",
+      "name": "Reminder sent successfully",
+      "agentID": "68deb8557ce9420007c0b439",
+      "description": "If reminder email is sent without issue, proceed to monitoring attendance.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b444",
+      "name": "Reminder delivery issue",
+      "agentID": "68deb8557ce9420007c0b439",
+      "description": "If there is a failure in sending the email or reaching the attendee, follow up on the issue.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b446",
+      "name": "Attended with engagement",
+      "agentID": "68deb8557ce9420007c0b43a",
+      "description": "Proceed if the attendee joined and engaged with the webinar.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b447",
+      "name": "Did not attend or low engagement",
+      "agentID": "68deb8557ce9420007c0b43a",
+      "description": "Proceed if the attendee did not join or had minimal engagement.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b448",
+      "name": "Follow-up delivered and flow ends",
+      "agentID": "68deb8557ce9420007c0b43b",
+      "description": "Close out the engagement flow after successful delivery of the post-event follow-up.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b44a",
+      "name": "Follow-up sent",
+      "agentID": "68deb8557ce9420007c0b43c",
+      "description": "Flow ends after follow-up is sent to encourage future engagement.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b44c",
+      "name": "Issue communicated and flow ends",
+      "agentID": "68deb8557ce9420007c0b43d",
+      "description": "End the flow after communicating the registration issue to the user.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b44d",
+      "name": "Issue communicated and flow ends",
+      "agentID": "68deb8557ce9420007c0b43e",
+      "description": "End the flow after attempting to resolve the reminder delivery issue.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b44e",
+      "name": "Engagement closed",
+      "agentID": "68deb8557ce9420007c0b43f",
+      "description": "Flow ends after contacting non-engaged attendee.",
+      "variableOrder": [],
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    }
+  ],
+  "agentFunctionTools": [],
+  "agentIntegrationTools": [
+    {
+      "id": "68deb8557ce9420007c0b445",
+      "agentID": "68deb8557ce9420007c0b439",
+      "description": null,
+      "inputVariables": {},
+      "captureResponse": null,
+      "captureInputVariables": null,
+      "integrationToolID": "68deb83f7ce9420007c0b42c",
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b449",
+      "agentID": "68deb8557ce9420007c0b43b",
+      "description": null,
+      "inputVariables": {},
+      "captureResponse": null,
+      "captureInputVariables": null,
+      "integrationToolID": "68deb83f7ce9420007c0b42c",
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    },
+    {
+      "id": "68deb8557ce9420007c0b44b",
+      "agentID": "68deb8557ce9420007c0b43c",
+      "description": null,
+      "inputVariables": {},
+      "captureResponse": null,
+      "captureInputVariables": null,
+      "integrationToolID": "68deb83f7ce9420007c0b42c",
+      "createdAt": "2025-10-02T17:37:26.000Z"
+    }
+  ],
+  "agentPathToolVariables": [],
+  "agentMcpIntegrationTools": [],
+  "apiTools": [],
+  "apiToolInputVariables": [],
+  "integrationTools": [
+    {
+      "id": "68deb83f7ce9420007c0b42c",
+      "name": "Send email",
+      "createdByID": 1806885,
+      "folderID": null,
+      "toolName": "google_gmail_send_email",
+      "description": null,
+      "toolProvider": "google_gmail",
+      "createdAt": "2025-10-02T17:37:26.000Z",
+      "updatedAt": "2025-10-02T17:37:26.000Z",
+      "updatedByID": 1806885
+    }
+  ],
+  "functions": [],
+  "functionPaths": [],
+  "functionVariables": [],
+  "mcpServers": [],
+  "mcpServerTools": [],
+  "mcpIntegrationTools": [],
+  "project": {
+    "type": "chat",
+    "name": "Webinar attendee engagement and follow-up flow",
+    "image": "",
+    "teamID": "LgnNMdg5jV",
+    "members": [],
+    "privacy": "private",
+    "platform": "webchat",
+    "_version": 1.2,
+    "linkType": "STRAIGHT",
+    "creatorID": 1806885,
+    "updatedBy": 1806885,
+    "apiPrivacy": "public",
+    "platformData": {
+      "invocationName": "template project general"
+    },
+    "customThemes": [],
+    "aiAssistSettings": {
+      "aiPlayground": true
+    },
+    "_id": "68deb8550eeddfe0a10fa288",
+    "updatedAt": "2025-10-02T17:37:25.975Z",
+    "devVersion": "68deb8550eeddfe0a10fa289",
+    "liveVersion": "68deb8550eeddfe0a10fa28a"
+  },
+  "_version": "1.2",
+  "secrets": [],
+  "variableStates": [],
+  "transcriptEvaluations": [
+    {
+      "name": "Deflection rate",
+      "default": true,
+      "description": null,
+      "type": "boolean",
+      "enabled": false,
+      "prompt": "Determine if the user requested to talk to a human in order to achieve their desired outcome.",
+      "settings": null,
+      "truePrompt": "The user did not require the need to talk to a human.",
+      "falsePrompt": "The user required the need to talk to a human agent."
+    },
+    {
+      "name": "AI summary",
+      "default": true,
+      "description": null,
+      "type": "string",
+      "enabled": false,
+      "prompt": "Look at the transcript and provide a brief summary of the conversation. Make sure to highlight the outcome of the conversation, and key moments or topics, and the overall tone of the customer.",
+      "settings": null
+    },
+    {
+      "name": "Satisfaction score",
+      "default": true,
+      "description": null,
+      "type": "number",
+      "enabled": false,
+      "prompt": "Rate the user's overall satisfaction based on the conversation, using a scale from 1 to 5.",
+      "settings": null,
+      "minimumValue": 1,
+      "minimumPrompt": "Look for negative comments or expressions of dissatisfaction to rate the minimum satisfaction.",
+      "maximumValue": 5,
+      "maximumPrompt": "Identify any comments or phrases in the transcript that express the highest level of satisfaction."
+    }
+  ]
+}
