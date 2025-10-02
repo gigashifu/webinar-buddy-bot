@@ -20,9 +20,11 @@ const Index = () => {
               <Link to="/events">
                 <Button variant="ghost">Events</Button>
               </Link>
-              <Button className="bg-gradient-accent hover:opacity-90 transition-smooth">
-                Sign In
-              </Button>
+              <Link to="/auth">
+                <Button className="bg-gradient-accent hover:opacity-90 transition-smooth">
+                  Sign In
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
