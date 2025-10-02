@@ -1,1 +1,4 @@
 project_id = "feaunzhylroniuziaglx"
+
+[functions.event-engagement-agent]
+cron = "0 0 * * *"
