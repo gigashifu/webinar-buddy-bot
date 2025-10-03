@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { StatCard } from "@/components/ui/stat-card";
 import { EventCard } from "@/components/EventCard";
-import { Users, Calendar, TrendingUp, Mail } from "lucide-react";
+import { Users, Calendar, TrendingUp, Mail, Bot } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface Event {
   id: string;
@@ -21,6 +23,8 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
+  const [emailsSent, setEmailsSent] = useState(0);
+  const [triggeringAgent, setTriggeringAgent] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -44,10 +48,34 @@ export default function Dashboard() {
 
       if (error) throw error;
       setEvents((data || []) as Event[]);
+
+      // Fetch email logs count
+      const { count } = await supabase
+        .from("email_logs")
+        .select("*", { count: "exact", head: true });
+      
+      setEmailsSent(count || 0);
     } catch (error) {
       console.error("Error fetching events:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const triggerAgent = async () => {
+    setTriggeringAgent(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('event-engagement-agent');
+      
+      if (error) throw error;
+      
+      toast.success("Engagement agent triggered successfully!");
+      fetchEvents(); // Refresh stats
+    } catch (error) {
+      console.error("Error triggering agent:", error);
+      toast.error("Failed to trigger agent. Please try again.");
+    } finally {
+      setTriggeringAgent(false);
     }
   };
 
@@ -60,11 +88,21 @@ export default function Dashboard() {
   return (
     <Layout>
       <div className="space-y-8">
-        <div>
-          <h1 className="text-4xl font-bold mb-2">Welcome back! 👋</h1>
-          <p className="text-muted-foreground">
-            Here's what's happening with your webinars today.
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Welcome back! 👋</h1>
+            <p className="text-muted-foreground">
+              Here's what's happening with your webinars today.
+            </p>
+          </div>
+          <Button 
+            onClick={triggerAgent} 
+            disabled={triggeringAgent}
+            className="gap-2"
+          >
+            <Bot className="w-4 h-4" />
+            {triggeringAgent ? "Running..." : "Run Agent Now"}
+          </Button>
         </div>
 
         {loading ? (
@@ -100,7 +138,7 @@ export default function Dashboard() {
               />
               <StatCard
                 title="Emails Sent"
-                value="0"
+                value={emailsSent}
                 icon={Mail}
               />
             </div>
