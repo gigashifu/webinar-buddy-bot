@@ -14,6 +14,83 @@ export type Database = {
   }
   public: {
     Tables: {
+      attendee_engagement: {
+        Row: {
+          attendee_id: string
+          created_at: string
+          engagement_data: Json | null
+          engagement_type: string
+          event_id: string
+          id: string
+        }
+        Insert: {
+          attendee_id: string
+          created_at?: string
+          engagement_data?: Json | null
+          engagement_type: string
+          event_id: string
+          id?: string
+        }
+        Update: {
+          attendee_id?: string
+          created_at?: string
+          engagement_data?: Json | null
+          engagement_type?: string
+          event_id?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendee_engagement_attendee_id_fkey"
+            columns: ["attendee_id"]
+            isOneToOne: false
+            referencedRelation: "attendees"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "attendee_engagement_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      attendee_interests: {
+        Row: {
+          attendee_id: string
+          created_at: string
+          id: string
+          interests: Json | null
+          preferences: Json | null
+          updated_at: string
+        }
+        Insert: {
+          attendee_id: string
+          created_at?: string
+          id?: string
+          interests?: Json | null
+          preferences?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          attendee_id?: string
+          created_at?: string
+          id?: string
+          interests?: Json | null
+          preferences?: Json | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendee_interests_attendee_id_fkey"
+            columns: ["attendee_id"]
+            isOneToOne: false
+            referencedRelation: "attendees"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       attendees: {
         Row: {
           attended: boolean | null
@@ -42,6 +119,51 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "attendees_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      email_logs: {
+        Row: {
+          attendee_id: string
+          email_type: string
+          event_id: string
+          id: string
+          sent_at: string
+          status: string
+          subject: string | null
+        }
+        Insert: {
+          attendee_id: string
+          email_type: string
+          event_id: string
+          id?: string
+          sent_at?: string
+          status?: string
+          subject?: string | null
+        }
+        Update: {
+          attendee_id?: string
+          email_type?: string
+          event_id?: string
+          id?: string
+          sent_at?: string
+          status?: string
+          subject?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_logs_attendee_id_fkey"
+            columns: ["attendee_id"]
+            isOneToOne: false
+            referencedRelation: "attendees"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "email_logs_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
             referencedRelation: "events"
