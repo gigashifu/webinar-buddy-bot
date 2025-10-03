@@ -67,9 +67,63 @@ The following environment variables are configured in `.env`:
 - **HMR**: Configured with clientPort 443 for Replit's proxy
 - **Deployment**: Configured as autoscale with npm build and start scripts
 
+## AI Webinar Engagement Agent
+
+### Overview
+The `agent.py` file contains a LangChain-based AI agent that manages webinar engagement, reminders, and follow-ups. It connects to the Supabase database and uses OpenAI for intelligent decision-making.
+
+### Agent Features
+- **Registration Management**: Register new attendees for events
+- **Engagement Tracking**: Track attendee interactions and engagement patterns
+- **Smart Reminders**: Send personalized reminder emails to attendees
+- **Follow-up Automation**: Automated post-event follow-ups
+- **Interest Management**: Track and update attendee interests and preferences
+- **Event Analytics**: Retrieve event details and upcoming webinar information
+
+### Configuration
+- **LLM Model**: GPT-4o with 2000 max tokens
+- **Context Window**: 4000 token memory buffer
+- **Agent Type**: Conversational React with tool usage
+- **Error Handling**: Comprehensive try-catch blocks for all operations
+
+### Database Tables Used
+- `events`: Event information and statistics
+- `attendees`: Attendee registration data
+- `attendee_engagement`: Engagement tracking
+- `attendee_interests`: User interests and preferences
+- `email_logs`: Email communication history
+
+### Running the Agent
+```bash
+python agent.py
+```
+
+### Important: API Key Setup
+The agent requires a valid OpenAI API key to function. The current `.env` file contains placeholder values that must be replaced with actual API keys:
+
+⚠️ **SECURITY NOTICE**: 
+- Replace `OPENAI_API_KEY=your_api_key_here` with your actual OpenAI API key
+- Replace `SUPABASE_URL` and `SUPABASE_KEY` with your actual Supabase credentials if needed
+- **NEVER commit actual API keys to version control**
+- Use Replit Secrets or environment variables for production deployments
+- The `.env` file should be in `.gitignore` (already configured)
+
+To get an OpenAI API key:
+1. Visit https://platform.openai.com/account/api-keys
+2. Create a new API key
+3. Update the `.env` file with your key
+4. Ensure you have sufficient credits in your OpenAI account
+
 ## Recent Changes (October 3, 2025)
 - Imported from GitHub repository
 - Updated Vite configuration for Replit environment
 - Set up workflow to run on port 5000 with webview output
 - Installed all npm dependencies
 - Verified application runs correctly
+- **Rewrote agent.py to be a comprehensive webinar engagement bot**:
+  - Integrated with Supabase database for event/attendee data
+  - Added proper LangChain agent with OpenAI GPT-4o
+  - Implemented 8 core functions for engagement management
+  - Configured appropriate token limits and context windows
+  - Added comprehensive error handling throughout
+- Installed Python 3.11 and required packages (supabase, openai, langchain, etc.)
