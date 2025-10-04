@@ -3,6 +3,3 @@ project_id = "feaunzhylroniuziaglx"
 [functions.event-engagement-agent]
 cron = "0 0 * * *"
 verify_jwt = false
-
-[functions.send-reminder]
-verify_jwt = false
