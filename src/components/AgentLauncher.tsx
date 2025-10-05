@@ -14,21 +14,28 @@ export function AgentLauncher() {
     }
 
     setRunning(true);
-    const toastId = toast.loading("Checking with Lovable AI...");
+    const toastId = toast.loading("Running AI engagement agent...");
 
     try {
-      const { error } = await supabase.functions.invoke("event-engagement-agent");
+      const { data, error } = await supabase.functions.invoke("event-engagement-agent");
 
       if (error) {
         throw error;
       }
 
-      toast.success("Lovable AI is handling your engagement tasks.", {
-        id: toastId,
-      });
+      const metrics = data?.metrics;
+      const rateLimits = data?.rateLimits;
+
+      toast.success(
+        `Engagement agent completed! ${metrics?.remindersSent || 0} reminders sent, ${metrics?.followupsSent || 0} follow-ups sent. Token usage: ${rateLimits?.tokensToday || 'N/A'}`,
+        {
+          id: toastId,
+          duration: 5000,
+        }
+      );
     } catch (error) {
-      console.error("Error triggering Lovable AI agent:", error);
-      toast.error("Could not reach Lovable AI. Please try again.", {
+      console.error("Error triggering engagement agent:", error);
+      toast.error("Could not run engagement agent. Please try again.", {
         id: toastId,
       });
     } finally {

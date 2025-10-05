@@ -1,18 +1,20 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3'
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { Resend } from 'npm:resend@3.5.0'
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import { createClient } from 'npm:@supabase/supabase-js@2.58.0';
+import { Resend } from 'npm:resend@3.5.0';
 
 // ============= CONFIGURATION =============
 const CONFIG = {
-  MAX_EMAILS_PER_HOUR: 100,
-  MAX_EMAILS_PER_DAY: 500,
-  MAX_AI_CALLS_PER_HOUR: 50,
-  BATCH_SIZE: 10,
+  MAX_EMAILS_PER_HOUR: 80,
+  MAX_EMAILS_PER_DAY: 400,
+  MAX_AI_CALLS_PER_HOUR: 20,
+  DAILY_TOKEN_LIMIT: 400000,
+  BATCH_SIZE: 15,
   RETRY_MAX_ATTEMPTS: 3,
-  RETRY_BASE_DELAY: 1000, // ms
-  RETRY_MAX_DELAY: 10000, // ms
-  REMINDER_INTERVALS: [24, 48, 72], // hours before event
-  CACHE_TTL: 3600000, // 1 hour in ms
+  RETRY_BASE_DELAY: 1000,
+  RETRY_MAX_DELAY: 10000,
+  REMINDER_INTERVALS: [24, 1],
+  CACHE_TTL: 7200000,
+  USE_TEMPLATES_ONLY: true,
 }
 
 const supabaseAdmin = createClient(
@@ -28,6 +30,7 @@ const rateLimits = {
   emailsThisHour: 0,
   emailsToday: 0,
   aiCallsThisHour: 0,
+  tokensToday: 0,
   hourReset: Date.now() + 3600000,
   dayReset: Date.now() + 86400000,
 }
@@ -160,7 +163,7 @@ async function generatePersonalizedContent(
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash',
+        model: 'google/gemini-flash-1.5-8b',
         messages: [
           {
             role: 'system',
@@ -171,7 +174,7 @@ async function generatePersonalizedContent(
             content: sanitizeInput(prompt)
           }
         ],
-        max_tokens: 300,
+        max_tokens: 200,
       })
     })
 
@@ -465,11 +468,12 @@ async function processBatch<T>(
 }
 
 // ============= MAIN AGENT LOGIC =============
-serve(async (req) => {
+Deno.serve(async (req) => {
   const startTime = Date.now()
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Client-Info, Apikey',
   }
 
   // Handle CORS
