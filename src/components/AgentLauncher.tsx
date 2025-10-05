@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bot, Loader2 } from "lucide-react";
+import { Bot, Loader as Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { supabase } from "@/integrations/supabase/client";
